@@ -40,7 +40,7 @@ In RHEL 9, `system.devices` became [default](https://access.redhat.com/documenta
 
 ```shell
 # rm -f /etc/lvm/devices/system.devices
-# sed -i -E 's/\s+# use_devicesfile = 0/        use_devicesfile = 0/' /etc/lvm/lvm.conf
+# sed -i -E 's/\s+# use_devicesfile = 1/        use_devicesfile = 0/' /etc/lvm/lvm.conf
 ```
 
 #### Enable autoassembly of special devices
@@ -48,7 +48,7 @@ In RHEL 9, `system.devices` became [default](https://access.redhat.com/documenta
 To allow RAID and LVM devices scanned during boot, `rd.auto` needs to be enabled.
 
 ```shell
-# grubby --update-kernel=/boot/vmlinuz-5.14.0-162.6.1.el9_1.x86_64 --args=rd.auto
+# grubby --update-kernel=/boot/vmlinuz-5.14.0-362.8.1.el9_3.x86_64 --args=rd.auto
 ```
 
 #### Create a symlink for dracut
@@ -85,7 +85,7 @@ Finally, clean the history
 Create the image-archive, which can be uploaded to the rescue-shell
 
 ```shell
-# tar cJvf /RHEL-91-el-amd64-minimal.tar.xz --exclude=/dev --exclude=/proc --exclude=/sys --exclude=/RHEL-91-el-amd64-minimal.tar.xz /
+# tar cJvf /RHEL-93-el-amd64-minimal.tar.xz --exclude=/dev --exclude=/proc --exclude=/sys --exclude=/RHEL-93-el-amd64-minimal.tar.xz /
 ```
 
 ## Install the image on your server
